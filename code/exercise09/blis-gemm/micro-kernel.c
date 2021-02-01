@@ -1,6 +1,7 @@
 #include "parameters.h"
 
-static inline void micro_kernel(int kc,
+__attribute__((noinline))
+static void micro_kernel(int kc,
                                 const double * restrict A,
                                 const double * restrict B,
                                 double * restrict AB)
@@ -28,7 +29,9 @@ static inline void micro_kernel(int kc,
 
   /* For every "block" column */
   for (l = 0; l < kc; ++l)
+    #pragma unroll 
     for (j = 0; j < NR; ++j)
+      #pragma omp simd 
       for (i = 0; i < MR; ++i)
         /* Multiply row of A into column of B. */
         AB[i + j*MR] += A[i + MR*l] * B[j + NR*l];
