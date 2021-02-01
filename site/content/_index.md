@@ -7,8 +7,8 @@ weight: 1
 # COMP52315: Performance Engineering
 
 This is the course webpage for the Performance Engineering part of
-[COMP52315]({{< modulepage >}}). It collects the exercises, syllabus, and notes. The source
-repository is [hosted on GitHub]({{< repo >}}).
+[COMP52315]({{< modulepage >}}). It collects the exercises, syllabus,
+and notes. The source repository is [hosted on GitHub]({{< repo >}}).
 
 The primary goal of the course is to equip you with tools and
 techniques to answer the question
@@ -47,6 +47,33 @@ sessions.
 {{< exercise >}}
 Exercises look like this.
 {{< /exercise >}}
+
+## Annotated slides
+
+Slides as annotated during the live lectures
+
+- [Session 1](lecture-slides/01.pdf)
+- [Session 2](lecture-slides/02.pdf)
+- [Session 3](lecture-slides/03.pdf), and the [roofline
+  paper](lecture-slides/williams2009-roofline.pdf)
+- [Session 4](lecture-slides/04.pdf)
+  I got a bit confused towards the end in the exercises determining
+  why likwid was reporting load counts different from those we were
+  expecting. We worked this out (thanks Finlay) by the next session:
+  the compiler was inlining some code and producing some extra moves.
+- [Session 5](lecture-slides/05.pdf)
+- [Session 6](lecture-slides/06.pdf)
+  I went over the end of the cache blocking for matrix-matrix
+  multiplication again, and then we looked briefly at the performance
+  we obtained on Hamilton. We then looked at how we can convince our
+  compiler to generate the code we know is right. As mentioned, in my
+  experience, of Intel, GCC, and Clang, the Intel compiler is the best
+  in terms of optimisation reports. Flags for Intel are in the slides.
+  For GCC, we can get some reports with `-fopt-info` (see [this
+  page](https://gcc.gnu.org/onlinedocs/gcc/Developer-Options.html) and
+  search for `-fopt-info`). For Clang, we can get some reports with
+  `-Rpass=vec` and `-Rpass-missed=vec` (see [this
+  page](https://clang.llvm.org/docs/UsersManual.html#options-to-emit-optimization-reports)).
 
 ## Syllabus
 
